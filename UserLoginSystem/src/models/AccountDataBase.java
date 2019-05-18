@@ -16,6 +16,7 @@ public class AccountDataBase {
 	}
 	
 	static {
-        accounts.put("kito", new Account("kito", "bla"));
+        accounts.put("Patrick", new Account("Patrick", "1234"));
+        accounts.put("Molly", new Account("Molly", "FloPup"));
     }
 }

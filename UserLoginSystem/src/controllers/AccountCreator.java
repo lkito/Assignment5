@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import managers.AccountManager;
+import models.Account;
+
 /**
  * Servlet implementation class AccountCreator
  */
@@ -19,23 +22,39 @@ public class AccountCreator extends HttpServlet {
      */
     public AccountCreator() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("/CreateAccount.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String userName = request.getParameter("username");
+		String password = request.getParameter("password");
+		AccountManager manager = (AccountManager) this.getServletContext().getAttribute("manager");
+		if(!manager.containsUser(userName)) {
+			manager.register(userName, password);
+			request.setAttribute("titleName", userName);
+			request.setAttribute("headerName", userName);
+			request.getRequestDispatcher("/UserWelcome.jsp").forward(request, response);
+		} else {
+			request.setAttribute("name", userName);
+			request.getRequestDispatcher("/NameAlreadyInUse.jsp").forward(request, response);
+		}
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
