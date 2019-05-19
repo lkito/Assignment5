@@ -17,7 +17,7 @@
     <tr>
         <td> 
         	<li>
-        		<a href= "ShowProduct.jsp?id= + ${item.getId()}" > ${item.getName()} </a>
+        		<a href= "ShowProduct.jsp?id=${item.getId()}" > ${item.getName()} </a>
         	</li>
         </td>
     </tr>

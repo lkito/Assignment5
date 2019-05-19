@@ -1,12 +1,14 @@
 package models;
 
+import java.math.BigDecimal;
+
 public class Item {
 	private String id;
 	private String name;
 	private String imageFile;
-	private int price;
+	private BigDecimal price;
 	
-	public Item(String id, String name, String imageFile, int price) {
+	public Item(String id, String name, String imageFile, BigDecimal price) {
 		this.name = name;
 		this.imageFile = imageFile;
 		this.price = price;
@@ -21,12 +23,19 @@ public class Item {
 		return imageFile;
 	}
 
-	public int getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 	
 	public String getId() {
 		return id;
+	}
+	
+	public boolean equals(Item it) {
+		if(this == it) return true;
+		if(it == null) return false;
+		if(this.getClass() != it.getClass()) return false;
+		return it.getId().equals(this.getId());
 	}
 	
 	@Override

@@ -11,17 +11,17 @@ CREATE TABLE products (
 );
 
 INSERT INTO products VALUES
-	("HC","Classic Hoodie","Hoodie.jpg",40),
-    ("HLE", "Limited Edition Hood","LimitedEdHood.jpg",54.95),
-	("TC", "Classic Tee","TShirt.jpg",13.95),
-	("TS","Seal Tee","SealTShirt.jpg",19.95),
-	("TLJa","Japanese Tee","JapaneseTShirt.jpg",17.95),
-	("TLKo","Korean Tee","KoreanTShirt.jpg",17.95),
-	("TLCh","Chinese Tee","ChineseTShirt.jpg",17.95),
-	("TLHi","Hindi Tee","HindiTShirt.jpg",17.95),
-	("TLAr","Arabic Tee","ArabicTShirt.jpg",17.95),
-	("TLHe","Hebrew Tee","HebrewTShirt.jpg",17.95),
-	("AKy","Keychain","Keychain.jpg",2.95),
-	("ALn","Lanyard","Lanyard.jpg",5.95),
-	("ATherm","Thermos","Thermos.jpg",19.95),
-	("AMinHm","Mini Football Helmet","MiniHelmet.jpg",29.95)
+	("HC","Classic Hoodie","Hoodie.png",40),
+    ("HLE", "Limited Edition Hood","LimitedEdHood.png",54.95),
+	("TC", "Classic Tee","TShirt.png",13.95),
+	("TS","Seal Tee","SealTShirt.png",19.95),
+	("TLJa","Japanese Tee","JapaneseTShirt.png",17.95),
+	("TLKo","Korean Tee","KoreanTShirt.png",17.95),
+	("TLCh","Chinese Tee","ChineseTShirt.png",17.95),
+	("TLHi","Hindi Tee","HindiTShirt.png",17.95),
+	("TLAr","Arabic Tee","ArabicTShirt.png",17.95),
+	("TLHe","Hebrew Tee","HebrewTShirt.png",17.95),
+	("AKy","Keychain","Keychain.png",2.95),
+	("ALn","Lanyard","Lanyard.png",5.95),
+	("ATherm","Thermos","Thermos.png",19.95),
+	("AMinHm","Mini Football Helmet","MiniHelmet.png",29.95)
