@@ -26,7 +26,7 @@ public class Item {
 	public BigDecimal getPrice() {
 		return price;
 	}
-	
+
 	public String getId() {
 		return id;
 	}

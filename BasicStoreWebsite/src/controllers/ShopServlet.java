@@ -3,7 +3,9 @@ import models.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HomePage
  */
-@WebServlet("/HomePage")
+@WebServlet({"/HomePage", "/ShopServlet"})
 public class ShopServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,6 +34,8 @@ public class ShopServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ItemDataBase data = (ItemDataBase) this.getServletContext().getAttribute("data");
 		request.setAttribute("items", data.getAllItems());
+		if(request.getSession().getAttribute("cart") == null) 
+			request.getSession().setAttribute("cart", new ShoppingCart());
 		request.getRequestDispatcher("/HomePage.jsp").forward(request, response);
 	}
 
@@ -39,8 +43,35 @@ public class ShopServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("cart");
+		ItemDataBase data = (ItemDataBase) request.getServletContext().getAttribute("data");
+		String id = (String) request.getParameter("productID");
+		if(id != null) {
+			if(cart.containsItem(id)) {
+				cart.setItemAmount(id, cart.getAmount(id) + 1);
+			}
+			cart.addItem(data.getItem(id));
+		} else {
+			Enumeration<String> params = request.getParameterNames();
+			while (params.hasMoreElements()) {
+		        String curParam = params.nextElement();
+		        cart.setItemAmount(curParam, Integer.parseInt(request.getParameter(curParam)));
+			}
+			cart.purgeUnusedItems();
+		}
+		request.getRequestDispatcher("/Cart.jsp").forward(request, response);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

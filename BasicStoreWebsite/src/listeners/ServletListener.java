@@ -25,21 +25,27 @@ public class ServletListener implements ServletContextListener, HttpSessionListe
      * @see HttpSessionListener#sessionCreated(HttpSessionEvent)
      */
     public void sessionCreated(HttpSessionEvent arg0)  { 
-        arg0.getSession().setAttribute("cart", new ShoppingCart());
+    	
+    	//For some reason, which is beyond me, this method 
+    	//doesn't get called when i start the program.
+    	//so instead i wrote this in doGet(), which is bad 
+    	//practice, but so is turning in buggy project ¯\_(ツ)_/¯
+    	
+        //arg0.getSession().setAttribute("cart", new ShoppingCart());
     }
 
 	/**
      * @see HttpSessionListener#sessionDestroyed(HttpSessionEvent)
      */
-    public void sessionDestroyed(HttpSessionEvent arg0)  { 
-    	arg0.getSession().removeAttribute("cart");
+    public void sessionDestroyed(HttpSessionEvent arg0)  {
+    	
     }
 
 	/**
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
     public void contextDestroyed(ServletContextEvent arg0)  { 
-    	arg0.getServletContext().removeAttribute("data");
+    	
     }
 
 	/**

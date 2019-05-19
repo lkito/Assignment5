@@ -16,9 +16,13 @@
 	<h1> <%out.append(it.getName()); %> </h1>
 	<img src="<%=request.getContextPath() + "/store-images/"+ it.getImageFile()%>" alt="<%=it.getName()%>">
 	<br>
-		<%="$" + it.getPrice()%>
+		
+	<form action="ShopServlet" method="POST">
+	    $<%=it.getPrice()%> <input name="productID" type="hidden" value="<%=it.getId()%>"/>
 		<input type="submit" value="Add to Cart"/>
-	</br>
+	</form> 
+	
+	
 		
 </body>
 </html>
